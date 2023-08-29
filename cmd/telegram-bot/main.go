@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/makeshort/telegram-bot/internal/bot"
-	"github.com/makeshort/telegram-bot/internal/config"
 	"log"
+	"telegram-bot/internal/bot"
+	"telegram-bot/internal/config"
 )
 
 func main() {

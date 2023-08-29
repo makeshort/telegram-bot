@@ -1,4 +1,4 @@
-module github.com/makeshort/telegram-bot
+module telegram-bot
 
 go 1.21.0
 

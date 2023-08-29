@@ -2,15 +2,16 @@ package bot
 
 import (
 	tgbotapi "github.com/Syfaro/telegram-bot-api"
-	"log"
 	"os"
 	"os/signal"
 	"reflect"
 	"syscall"
+	"telegram-bot/internal/handler"
 )
 
 type Bot struct {
-	client *tgbotapi.BotAPI
+	client  *tgbotapi.BotAPI
+	handler *handler.Handler
 }
 
 func New(token string) (*Bot, error) {
@@ -18,7 +19,11 @@ func New(token string) (*Bot, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Bot{client: bot}, nil
+	h := handler.New(bot)
+	return &Bot{
+		client:  bot,
+		handler: h,
+	}, nil
 }
 
 func (b *Bot) Run() {
@@ -42,7 +47,7 @@ func (b *Bot) handleUpdates(u tgbotapi.UpdateConfig) {
 		if reflect.TypeOf(update.Message.Text).Kind() == reflect.String && update.Message.Text != "" {
 			switch update.Message.Text {
 			case "/start":
-				log.Println("/start triggered")
+				b.handler.HandleStart(update)
 			}
 		}
 	}

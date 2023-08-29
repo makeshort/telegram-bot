@@ -1,0 +1,20 @@
+# Ignore config files
+.env
+config/*.yml
+
+# Ignore binary files
+.bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Ignore Redis dump files
+*.rdb
+
+# Mac OS X files
+.DS_Store
+
+# Ignore IDE files
+.idea/

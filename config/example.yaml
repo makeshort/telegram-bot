@@ -1,0 +1,6 @@
+env: "local"
+telegram:
+  token: ""
+
+openai:
+  api_key: ""

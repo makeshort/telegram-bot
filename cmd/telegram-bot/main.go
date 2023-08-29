@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"telegram-bot/internal/bot"
 	"telegram-bot/internal/config"
 )
@@ -9,9 +8,9 @@ import (
 func main() {
 	cfg := config.MustLoad()
 
-	b, err := bot.New(cfg.Telegram.Token)
+	b, err := bot.New(cfg)
 	if err != nil {
-		log.Printf("can't start bot")
+		panic("bot: failed to start bot")
 	}
 
 	b.Run()

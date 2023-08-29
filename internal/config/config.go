@@ -7,8 +7,15 @@ import (
 	"os"
 )
 
+const (
+	EnvLocal       = "local"
+	EnvDevelopment = "dev"
+	EnvProduction  = "prod"
+)
+
 type Config struct {
-	Telegram `yaml:"telegram"`
+	Env      string   `yaml:"env" env-required:"true"`
+	Telegram Telegram `yaml:"telegram"`
 }
 
 type Telegram struct {

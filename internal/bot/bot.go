@@ -56,6 +56,8 @@ func (b *Bot) handleUpdates(u tgbotapi.UpdateConfig) {
 			switch update.Message.Text {
 			case "/start":
 				b.handler.HandleStart(update)
+			default:
+				b.handler.HandleMessage(update)
 			}
 		}
 	}
